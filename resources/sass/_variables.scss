@@ -1,0 +1,18 @@
+$main-font: 'Gotham Pro', sans-serif;
+
+$duration: 0.3s;
+$title-gradient: linear-gradient(320.62deg, #20222F 6.82%, #4A4D62 95.85%);
+
+$deep-blue: #262834;
+
+$body-bg: #EEF1F7;
+$text-color: $deep-blue;
+
+$container-inner-width: 1360px;
+$container-padding-x: 32px;
+$container-padding-x-tablet: 24px;
+$container-padding-x-mobile: 16px;
+
+$container-max-width: calc(#{$container-inner-width} + 2*#{$container-padding-x});
+$tablet-max-width: 1023px;
+$mobile-max-width: 767px;

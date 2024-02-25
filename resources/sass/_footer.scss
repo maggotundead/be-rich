@@ -1,0 +1,110 @@
+.footer {
+    position: relative;
+    padding-bottom: $container-padding-x;
+    color: #fff;
+    &-bg {
+        position: absolute;
+        top: 0;
+        left: $container-padding-x;
+        right: $container-padding-x;
+        bottom: $container-padding-x;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 24px;
+        }
+    }
+    .container {
+        max-width: 100%;
+    }
+    .container-inner {
+        width: 100%;
+        min-height: 450px;
+        padding: 32px 48px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    .contacts {
+        display: flex;
+        width: 100%;
+        a {
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.33;
+            display: flex;
+            align-items: center;
+            @media (hover:hover) {
+                &:hover {
+                    opacity: .5;
+                    transition: $duration;
+                }
+            }
+            &:not(:last-child) {
+                margin-right: 32px;
+            }
+            &.social {
+                &::after {
+                    content: '';
+                    width: 24px;
+                    height: 24px;
+                    flex-shrink: 0;
+                    margin-left: 9px;
+                    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M5.39909 5H16.3991H18.3991V7L18.3991 18H16.3991L16.3991 8.02125L6.41421 18.0061L5 16.5919L14.5919 7H5.39909V5Z' fill='white'/%3E%3C/svg%3E%0A");
+                    background-size: 100% 100%;
+                }
+            }
+
+        }
+        span {
+            border-bottom: 2px solid currentColor;
+        }
+    }
+    .logo {
+        margin: 36px auto 0;
+    }
+    .block-title {
+        margin-top: 24px;
+        color: #fff;
+        background: initial;
+        -webkit-background-clip: initial;
+        -webkit-text-fill-color: initial;
+        background-clip: initial;
+        text-fill-color: initial;
+        width: 100%;
+        text-align: center;
+    }
+    .btn-links {
+        width: 100%;
+        justify-content: center;
+        margin-top: 32px;
+        margin-bottom: 44px;
+    }
+    address {
+        font-style: normal;
+        margin-right: auto;
+    }
+    *:is(address, .policies) {
+        font-weight: 300;
+        line-height: 1.25;
+        letter-spacing: -1px;
+        a {
+            @media (hover:hover) {
+                &:hover {
+                    opacity: .5;
+                    transition: $duration;
+                }
+            }
+        }
+    }
+    .policies {
+        display: flex;
+        a {
+            &:not(:last-child) {
+                margin-right: 32px;
+            }
+        }
+    }
+}

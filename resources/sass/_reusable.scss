@@ -1,0 +1,39 @@
+.page-title {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -3px;
+}
+.block-title {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    background: $title-gradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+.subtitle {
+    font-size: 24px;
+    letter-spacing: -1px;
+    + .block-title {
+        margin-top: 24px;
+    }
+}
+
+.btn-links {
+    display: flex;
+    a {
+        @media (hover:hover) {
+            &:hover {
+                opacity: .5;
+                transition: $duration;
+            }
+        }
+        &:not(:last-child) {
+            margin-right: 16px;
+        }
+    }
+}
