@@ -10,9 +10,14 @@ $text-color: $deep-blue;
 
 $container-inner-width: 1360px;
 $container-padding-x: 32px;
-$container-padding-x-tablet: 24px;
+$container-padding-x-widescreen: 24px;
+$container-padding-x-tablet: 20px;
 $container-padding-x-mobile: 16px;
 
 $container-max-width: calc(#{$container-inner-width} + 2*#{$container-padding-x});
 $tablet-max-width: 1023px;
 $mobile-max-width: 767px;
+
+$card-radius-max: 24px;
+$card-radius-widescreen: 20px;
+$card-radius-tablet: 16px;

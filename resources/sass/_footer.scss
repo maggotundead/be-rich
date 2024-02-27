@@ -2,17 +2,47 @@
     position: relative;
     padding-bottom: $container-padding-x;
     color: #fff;
+    @include maxw1200 {
+        padding-bottom: $container-padding-x-widescreen;
+    }
+    @include tablet {
+        padding-bottom: $container-padding-x-tablet;
+    }
+    @include mobile {
+        padding-bottom: $container-padding-x-mobile;
+    }
     &-bg {
         position: absolute;
         top: 0;
         left: $container-padding-x;
         right: $container-padding-x;
         bottom: $container-padding-x;
+        @include maxw1200 {
+            left: $container-padding-x-widescreen;
+            right: $container-padding-x-widescreen;
+            bottom: $container-padding-x-widescreen;
+        }
+        @include tablet {
+            left: $container-padding-x-tablet;
+            right: $container-padding-x-tablet;
+            bottom: $container-padding-x-tablet;
+        }
+        @include mobile {
+            left: $container-padding-x-mobile;
+            right: $container-padding-x-mobile;
+            bottom: $container-padding-x-mobile;
+        }
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 24px;
+            border-radius: $card-radius-max;
+            @include maxw1200 {
+                border-radius: $card-radius-widescreen;
+            }
+            @include tablet {
+                border-radius: $card-radius-tablet;
+            }
         }
     }
     .container {
@@ -26,10 +56,44 @@
         flex-wrap: wrap;
         justify-content: center;
         align-items: flex-start;
+        @include tablet {
+            padding: 24px;
+        }
+        @include mobile {
+            padding: 40px 24px;
+            flex-direction: column;
+            align-items: center;
+        }
     }
     .contacts {
         display: flex;
         width: 100%;
+        list-style: none;
+        @include mobile {
+            margin-top: 48px;
+            order: 4;
+            flex-direction: row-reverse;
+            flex-wrap: wrap;
+            justify-content: center;
+            row-gap: 24px;
+            column-gap: 48px;
+        }
+        li {
+            display: flex;
+            justify-content: center;
+            &:not(:last-child) {
+                margin-right: 32px;
+                @include mobile {
+                    margin-right: 0;
+                    order: 2;
+                }
+            }
+            &:last-child {
+                @include mobile {
+                    width: 100%;
+                }
+            }
+        }
         a {
             font-size: 18px;
             font-weight: 500;
@@ -42,9 +106,7 @@
                     transition: $duration;
                 }
             }
-            &:not(:last-child) {
-                margin-right: 32px;
-            }
+
             &.social {
                 &::after {
                     content: '';
@@ -64,6 +126,10 @@
     }
     .logo {
         margin: 36px auto 0;
+        @include mobile {
+            order: 1;
+            margin: 0;
+        }
     }
     .block-title {
         margin-top: 24px;
@@ -75,16 +141,31 @@
         text-fill-color: initial;
         width: 100%;
         text-align: center;
+        @include mobile {
+            margin-top: 32px;
+            order: 2;
+        }
     }
     .btn-links {
         width: 100%;
         justify-content: center;
         margin-top: 32px;
         margin-bottom: 44px;
+        @include mobile {
+            margin-top: 24px;
+            margin-bottom: 0;
+            order: 3;
+        }
     }
     address {
         font-style: normal;
         margin-right: auto;
+        @include mobile {
+            margin-top: 24px;
+            order: 6;
+            text-align: center;
+            margin-right: 0;
+        }
     }
     *:is(address, .policies) {
         font-weight: 300;
@@ -101,10 +182,28 @@
     }
     .policies {
         display: flex;
+        @include mobile {
+            order: 5;
+            margin-top: 24px;
+            justify-content: center;
+        }
         a {
             &:not(:last-child) {
                 margin-right: 32px;
+                @include mobile {
+                    margin: 0;
+                }
             }
+            &:not(:last-of-type) {
+                @include mobile {
+                    margin-right: 32px;
+                }
+            }
+        }
+    }
+    .copyright {
+        @include mobile {
+            display: none;
         }
     }
 }

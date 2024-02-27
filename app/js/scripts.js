@@ -26,7 +26,8 @@ new Swiper(homeSlider, {
             loop: true,
             speed: 800,
             autoplay: true,
-            // spaceBetween: 20,
+            spaceBetween: 12,
+            initialSlide: 1,
         },
         768: {
             slidesPerView: 'auto',

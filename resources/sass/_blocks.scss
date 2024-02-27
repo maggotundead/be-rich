@@ -1,60 +1,170 @@
 .block-homescreen {
     position: relative;
-    padding-top: 32px;
+    padding-top: $container-padding-x;
     overflow: hidden;
+    @include maxw1200 {
+        padding-top: $container-padding-x-widescreen;
+    }
+    @include tablet {
+        padding-top: $container-padding-x-tablet;
+    }
+    @include mobile {
+        padding-top: $container-padding-x-mobile;
+    }
     .block-bg {
         position: absolute;
         top: $container-padding-x;
         left: $container-padding-x;
         right: $container-padding-x;
         bottom: 0;
+        @include maxw1200 {
+            top: $container-padding-x-widescreen;
+            left: $container-padding-x-widescreen;
+            right: $container-padding-x-widescreen;
+        }
+        @include tablet {
+            top: $container-padding-x-tablet;
+            left: $container-padding-x-tablet;
+            right: $container-padding-x-tablet;
+        }
+        @include mobile {
+            top: $container-padding-x-mobile;
+            left: $container-padding-x-mobile;
+            right: $container-padding-x-mobile;
+            bottom: 120px;
+        }
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 24px;
+            border-radius: $card-radius-max;
+            object-position: right center;
+            @include maxw1200 {
+                border-radius: $card-radius-widescreen;
+            }
+            @include tablet {
+                border-radius: $card-radius-tablet;
+            }
         }
     }
     .container {
         display: grid;
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
         min-height: 850px;
+        @media screen and (max-width: #{$container-inner-width + 4*$container-padding-x}) {
+            padding-left: 2*$container-padding-x;
+            padding-right: 2*$container-padding-x;
+            min-height: 800px;
+        }
+        @include maxw1200 {
+            padding-left: 2*$container-padding-x-widescreen;
+            padding-right: 2*$container-padding-x-widescreen;
+            min-height: 720px;
+        }
+        @include tablet {
+            padding-left: 2*$container-padding-x-tablet;
+            padding-right: 2*$container-padding-x-tablet;
+            min-height: 720px;
+        }
+        @include mobile {
+            padding-left: calc(#{$container-padding-x-mobile + 24px});
+            padding-right: calc(#{$container-padding-x-mobile + 24px});
+            grid-template-columns: minmax(0, 1fr);
+        }
     }
     .text {
         padding-top: 68px;
         color: #fff;
+        @include mobile {
+            padding-top: 24px;
+        }
     }
     .page-title {
         margin-top: 174px;
+        @include maxw1440 {
+            margin-top: 160px;
+        }
+        @include maxw1200 {
+            margin-top: 120px;
+        }
+        @include tablet {
+            margin-top: 80px;
+        }
+        @include mobile {
+            margin-top: 32px;
+        }
     }
     .title-descr {
         margin-top: 24px;
         font-size: 32px;
         letter-spacing: -1px;
+        @include maxw1440 {
+            font-size: 28px;
+        }
+        @include maxw1200 {
+            font-size: 24px;
+        }
+        @include tablet {
+            font-size: 20px;
+        }
+        @include mobile {
+            margin-top: 16px;
+            font-size: 16px;
+            text-align: center;
+            letter-spacing: 0;
+        }
     }
     .btn-links {
         margin-top: 48px;
+        @include mobile {
+            margin-top: 32px;
+        }
     }
 
     .slider {
         padding-top: 88px;
         max-width: 634px;
         margin-left: auto;
+        @include mobile {
+            max-width: 100%;
+            padding-top: 64px;
+        }
     }
 
     .swiper {
         &-slide {
-            width: auto;
+            // width: auto;
+            width: 234px;
+            @include maxw1440 {
+                width: 200px;
+            }
+            @include maxw1200 {
+                width: calc((100% + 2*36px) / 3);
+            }
             &:nth-child(1) {
                 top: 150px;
                 margin-right: -36px;
+                @include mobile {
+                    margin-right: 0;
+                    top: 0;
+                }
             }
             &:nth-child(2) {
                 margin-right: -36px;
                 z-index: 2;
+                @include mobile {
+                    margin-right: 0;
+                    top: 0;
+                }
             }
             &:nth-child(3) {
                 top: 88px;
+                @include mobile {
+                    top: 0;
+                }
+            }
+            img {
+                width: 100%;
             }
         }
     }
@@ -64,11 +174,29 @@
     padding-top: 290px;
     padding-bottom: 250px;
     position: relative;
+    @include maxw1440 {
+        padding-top: 240px;
+        padding-bottom: 240px;
+    }
+    @include maxw1200 {
+        padding-top: 200px;
+        padding-bottom: 160px;
+    }
+    @include tablet {
+        padding-bottom: 120px;
+    }
+    @include mobile {
+        padding-top: 172px;
+        padding-bottom: 64px;
+    }
     .block-bg {
         position: absolute;
         top: 158px;
         left: 0;
         right: 0;
+        @include mobile {
+            top: 0;
+        }
         img {
             width: 100%;
         }
@@ -117,16 +245,43 @@
     .text-wrapper {
         min-height: 600px;
         background-color: #fff;
-        border-radius: 24px;
+        border-radius: $card-radius-max;
         display: flex;
         align-items: flex-end;
         overflow: hidden;
         position: relative;
+        @include maxw1440 {
+            min-height: 40vw;
+        }
+        @include maxw1200 {
+            border-radius: $card-radius-widescreen;
+        }
+        @include tablet {
+            border-radius: $card-radius-tablet;
+        }
+        @include mobile {
+            min-height: initial;
+            flex-direction: column;
+        }
     }
     .text {
-        max-width: 650px;
-        padding: 64px;
+        // max-width: 650px;
+        max-width: calc(50% - 30px);
+        padding: 64px 0 64px 64px;
         position: relative;
+        @include maxw1440 {
+            padding: 56px 0 56px 56px;
+        }
+        @include maxw1200 {
+            padding: 48px 0 48px 48px;
+        }
+        @include tablet {
+            padding: 24px 0 24px 24px;
+        }
+        @include mobile {
+            padding: 32px 24px;
+            max-width: 100%;
+        }
     }
     .descr {
         margin-top: 16px;
@@ -139,20 +294,60 @@
         left: 770px;
         right: 0;
         bottom: 0;
+        @include maxw1440 {
+            left: calc(50% + 30px);
+        }
+        @include mobile {
+            position: relative;
+            padding-bottom: 125.56%;
+            left: initial;
+            width: 100%;
+        }
     }
     figure {
         position: absolute;
+        width: 226px;
+        @include maxw1440 {
+            width: calc(100% / 3);
+        }
+        @include mobile {
+            width: 40%;
+        }
         &:nth-child(1) {
             top: 42px;
             left: 0;
+            @include mobile {
+                top: 12.28%;
+                left: 4.62%;
+            }
         }
         &:nth-child(2) {
             top: 332px;
             left: 240px;
+            @include maxw1440 {
+                left: 42%;
+                top: 60%;
+            }
+            @include mobile {
+                top: 0;
+                left: 47%;
+            }
         }
         &:nth-child(3) {
             top: -145px;
             left: 335px;
+            @include maxw1440 {
+                left: 60%;
+                top: -26%;
+            }
+            @include mobile {
+                // top: 36.54%;
+                top: 30.54%;
+                left: 55.26%;
+            }
+        }
+        img {
+            width: 100%;
         }
     }
 }
@@ -161,7 +356,23 @@
     padding-top: 300px;
     padding-bottom: 250px;
     position: relative;
-
+    overflow: hidden;
+    @include maxw1440 {
+        padding-top: 240px;
+        padding-bottom: 240px;
+    }
+    @include maxw1200 {
+        padding-top: 200px;
+        padding-bottom: 160px;
+    }
+    @include tablet {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    @include mobile {
+        padding-top: 64px;
+        padding-bottom: 64px;
+    }
     .container {
         display: flex;
         flex-direction: column;
@@ -178,13 +389,38 @@
     figure {
         position: absolute;
     }
+    .figure-top {
+        display: none;
+        @include mobile {
+            display: block;
+            width: 86.25vw;
+            margin: 0 auto;
+            padding-bottom: 32px;
+            position: relative;
+        }
+        img {
+            width: 100%;
+        }
+    }
     .figure-left {
         top: -44px;
         right: calc(100% + 12px);
+        @include maxw1200 {
+            right: 100%;
+        }
+        @include mobile {
+            display: none;
+        }
     }
     .figure-right {
         top: -48px;
         left: calc(100% + 60px);
+        @include maxw1200 {
+            left: 100%;
+        }
+        @include mobile {
+            display: none;
+        }
     }
     .block-title {
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -210,34 +446,100 @@
         display: grid;
         grid-template-columns: 78fr 55fr;
         grid-gap: 24px;
+        @include tablet {
+            grid-gap: 20px;
+        }
+        @include mobile {
+            grid-template-columns: 1fr;
+            grid-gap: 16px;
+        }
     }
     .content-group {
         background-color: #fff;
-        border-radius: 24px;
+        border-radius: $card-radius-max;
         position: relative;
         overflow: hidden;
         min-height: 460px;
+        @include maxw1200 {
+            border-radius: $card-radius-widescreen;
+        }
+        @include tablet {
+            border-radius: $card-radius-tablet;
+        }
+        @include mobile {
+            min-height: initial;
+        }
         &:nth-child(1) {
             padding: 32px;
             padding-right: 435px;
+            @include maxw1440 {
+                padding: 24px;
+                padding-right: 50%;
+            }
+            @include mobile {
+                padding: 32px 24px 0;
+            }
+            .content-group-figures {
+                @include mobile {
+                    margin-top: 32px;
+                }
+            }
             figure {
                 right: 22px;
                 bottom: 0;
+                width: 369px;
+                @include maxw1440 {
+                    width: calc(50% - 48px);
+                }
+                @include mobile {
+                    right: 0;
+                    position: initial;
+                    width: 100%;
+                }
             }
         }
         &:nth-child(2) {
             padding: 32px;
             padding-bottom: 290px;
+            @include maxw1440 {
+                padding: 24px;
+                padding-bottom: 50%;
+            }
+            @include mobile {
+                padding-bottom: 24px;
+            }
+            .content-group-figures {
+                @include mobile {
+                    padding-bottom: 138%;
+                }
+            }
             figure {
                 &:nth-child(1) {
                     left: 32px;
                     bottom: 64px;
                     z-index: 2;
+                    @include maxw1440 {
+                        width: 50%;
+                    }
+                    @include mobile {
+                        width: 98%;
+                        left: 0;
+                        bottom: 0;
+                    }
                 }
                 &:nth-child(2) {
                     right: 0;
                     bottom: 0;
                     z-index: 1;
+                    width: 259px;
+                    @include maxw1440 {
+                        width: 40%;
+                    }
+                    @include mobile {
+                        width: 86.78%;
+                        right: -24px;
+                        bottom: -5%;
+                    }
                 }
             }
         }
@@ -247,18 +549,72 @@
             padding-right: 785px;
             justify-content: flex-end;
             min-height: 680px;
+            @include maxw1440 {
+                padding: 56px 40% 56px 56px;
+                min-height: 50vw;
+            }
+            @include maxw1200 {
+                padding: 48px 40% 48px 48px;
+            }
+            @include tablet {
+                padding: 40px 40% 40px 40px;
+            }
+            @include mobile {
+                grid-column: initial;
+                padding: 32px 24px;
+            }
+            .content-group-figures {
+                @include mobile {
+                    margin-top: 32px;
+                    padding-bottom: 140%;
+                }
+            }
             figure {
+                width: 256px;
+                @include maxw1440 {
+                    width: calc(40% / 3);
+                }
+                @include mobile {
+                    width: 46.78%;
+                }
                 &:nth-child(1) {
                     top: 94px;
                     left: 620px;
+                    @include maxw1440 {
+                        left: 60%;
+                        top: 10%;
+                    }
+                    @include mobile {
+                        left: 0;
+                        top: 14.237%;
+                    }
                 }
                 &:nth-child(2) {
                     top: 255px;
                     left: 904px;
+                    @include maxw1440 {
+                        left: calc(60% + (40% / 3) + 8px);
+                        top: 44%;
+                    }
+                    @include mobile {
+                        top: 0;
+                        right: 0;
+                        left: initial;
+                    }
                 }
                 &:nth-child(3) {
                     top: 24px;
                     left: 1192px;
+                    @include maxw1440 {
+                        left: calc(60% + 18% + 8px);
+                        top: -12%;
+                    }
+                    @include mobile {
+                        left: 50%;
+                        transform: translateX(-50%);
+                        top: initial;
+                        bottom: 0;
+                    }
                 }
             }
         }
@@ -268,6 +624,9 @@
             height: 100%;
             position: relative;
             z-index: 2;
+            @include mobile {
+                height: auto;
+            }
         }
         &-title:not(.block-title) {
             font-size: 20px;
@@ -278,6 +637,15 @@
             margin-top: 16px;
             font-size: 14px;
             line-height: 24px;
+        }
+        &-figures {
+            @include mobile {
+                position: relative;
+                width: 100%;
+            }
+            img {
+                width: 100%;
+            }
         }
     }
     .block-title {
@@ -290,6 +658,9 @@
     }
     .btn-links {
         margin-top: auto;
+        @include mobile {
+            margin-top: 24px;
+        }
     }
 }
 
@@ -297,11 +668,34 @@
     padding-top: 356px;
     min-height: 880px;
     position: relative;
+    padding-bottom: 240px;
+    @include maxw1440 {
+        padding-top: 320px;
+        min-height: initial;
+    }
+    @include maxw1200 {
+        padding-top: 240px;
+    }
+    @include tablet {
+        padding-top: 160px;
+        padding-bottom: 160px;
+        min-height: initial;
+    }
+    @include mobile {
+        padding-top: 115px;
+        padding-bottom: 115px;
+    }
     .block-bg {
         position: absolute;
         top: 180px;
         left: 0;
         right: 0;
+        @include maxw1440 {
+            top: 24%;
+        }
+        @include mobile {
+            top: 0;
+        }
         img {
             width: 100%;
         }
@@ -319,5 +713,17 @@
         -webkit-text-fill-color: transparent;
         background-clip: text;
         text-fill-color: transparent;
+        @include maxw1440 {
+            font-size: 52px;
+        }
+        @include maxw1200 {
+            font-size: 48px;
+        }
+        @include tablet {
+            font-size: 44px;
+        }
+        @include mobile {
+            font-size: 40px;
+        }
     }
 }
